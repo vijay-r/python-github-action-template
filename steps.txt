@@ -5,3 +5,4 @@ git add .;git commit -m "inti";git push
 gh workflow list && gh run list --limit 10
 gh workflow run .github/workflows/5min-greeting.yml --ref main -f timezone="Asia/Singapore"
 
+python3 main.py;git add .;git commit -m "inti";git push
