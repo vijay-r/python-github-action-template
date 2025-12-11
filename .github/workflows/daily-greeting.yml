@@ -2,8 +2,7 @@ name: Daily Greeting
 
 on:
   schedule:
-    # Runs daily at 09:00 Asia/Singapore (09:00 SGT = 01:00 UTC)
-    - cron: '0 1 * * *'
+    - cron: '0 */2 * * *'
   workflow_dispatch:
     inputs:
       timezone:
