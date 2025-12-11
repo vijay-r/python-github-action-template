@@ -1,0 +1,27 @@
+name: Daily Greeting
+
+on:
+  schedule:
+    # Runs daily at 09:00 Asia/Singapore (09:00 SGT = 01:00 UTC)
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    inputs:
+      timezone:
+        description: 'Timezone for formatting the greeting (IANA name, e.g., America/Los_Angeles). Defaults to UTC.'
+        required: false
+        default: 'UTC'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies (none required, but ensures environment)
+        run: npm ci || echo "No dependencies to install"
