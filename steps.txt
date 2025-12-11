@@ -3,6 +3,11 @@ https://literate-zebra-744xqvjgwpfx6r9.github.dev/
 
 git add .;git commit -m "inti";git push
 gh workflow list && gh run list --limit 10
-gh workflow run .github/workflows/5min-greeting.yml --ref main -f timezone="Asia/Singapore"
+gh workflow run .github/workflows/actions.yml --ref main -f timezone="Asia/Singapore"
+gh run view 214897879 --log
+
+gh repo set-default
+
+
 
 python3 main.py;git add .;git commit -m "inti";git push
