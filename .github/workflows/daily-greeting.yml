@@ -2,10 +2,11 @@ name: Daily Greeting
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # 11:00 SGT
-    - cron: '0 7 * * *'   # 15:00 SGT
-    - cron: '0 10 * * *'  # 18:00 SGT
-    - cron: '0 14 * * *'  # 22:00 SGT
+    - cron: '0 14 * * 2'   # Monday 22:00 SGT
+    - cron: '0 3 * * 3'    # Monday 11:00 SGT
+    - cron: '0 7 * * 3'    # Monday 15:00 SGT
+    - cron: '0 10 * * 3'   # Monday 18:00 SGT
+    - cron: '0 14 * * 3'   # Monday 22:00 SGT
   workflow_dispatch:
     inputs:
       timezone:
