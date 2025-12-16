@@ -2,13 +2,16 @@ name: Daily Greeting
 
 on:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 3 * * *'   # 11:00 SGT
+    - cron: '0 7 * * *'   # 15:00 SGT
+    - cron: '0 10 * * *'  # 18:00 SGT
+    - cron: '0 14 * * *'  # 22:00 SGT
   workflow_dispatch:
     inputs:
       timezone:
-        description: 'Timezone for formatting the greeting (IANA name, e.g., America/Los_Angeles). Defaults to UTC.'
+        description: 'Timezone for formatting the greeting (IANA name, e.g., Asia/Singapore).'
         required: false
-        default: 'UTC'
+        default: 'Asia/Singapore'
 
 jobs:
   greet:
