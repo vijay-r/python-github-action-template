@@ -58,7 +58,7 @@ def fetchXML():
             sorted(result_map.items(), key=lambda x: int(x[0]))
         )
 
-        print(json.dumps(sorted_data, indent=2, ensure_ascii=False))
+        print(f"data={json.dumps(sorted_data, ensure_ascii=False)})
 
 def main():
     fetchXML()
