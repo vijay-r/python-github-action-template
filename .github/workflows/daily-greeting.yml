@@ -2,7 +2,7 @@ name: Daily Greeting
 
 on:
   schedule:
-    - cron: '0 14 * * 2'   # Monday 22:00 SGT
+    - cron: '30 13 * * 2'   # Monday 22:00 SGT
     - cron: '0 3 * * 3'    # Monday 11:00 SGT
     - cron: '0 7 * * 3'    # Monday 15:00 SGT
     - cron: '0 10 * * 3'   # Monday 18:00 SGT
