@@ -1,0 +1,49 @@
+name: Daily Radio Report Fetch
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    inputs:
+      timezone:
+        description: 'Timezone for formatting the greeting (IANA name, e.g., Asia/Singapore).'
+        required: false
+        default: 'Asia/Singapore'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # REQUIRED for push
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute fetch script
+        run: python fetch.py
+
+      - name: Commit and push JSON file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add json/*.json
+
+          # Commit only if there are changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto update JSON data ($(date +'%Y-%m-%d'))"
+            git push
+          fi
