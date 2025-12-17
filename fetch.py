@@ -73,7 +73,7 @@ def get_time_window(now_sg=None):
     print("Current Time:", now_sg.strftime("%I:%M %p"))
     print("Current Hour:", hour)
 
-    if hour in (9, 10):        # 9am, 10am
+    if hour in (9, 10, 11):        # 9am, 10am, 11am
         return "6:00AM", "10:00AM"
 
     elif hour in (13, 14):    # 1pm, 2pm
@@ -82,12 +82,11 @@ def get_time_window(now_sg=None):
     elif hour in (16, 17):    # 4pm, 5pm
         return "2:00PM", "5:00PM"
 
-    elif hour in (21, 22, 23):    # 9pm, 10pm, 11pm
+    elif hour in (21, 22):    # 9pm, 10pm, 11pm
         return "5:00PM", "9:00PM"
 
     else:
         return None, None
-        # return "6:00AM", "10:00AM"
 
 def report(unique_data):
 
