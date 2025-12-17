@@ -8,6 +8,10 @@ from zoneinfo import ZoneInfo
 numberToFetch = "50"
 
 def fetchXML():
+
+    start, end = get_time_window()
+    print(f"Time Window: {start} to {end}")
+
     # URL to fetch XML
     url = f"https://np.tritondigital.com/public/nowplaying?mountName=OLI968FMAAC&numberToFetch={numberToFetch}&eventType=ad"
 
@@ -82,7 +86,7 @@ def get_time_window(now_sg=None):
     elif hour in (16, 17):    # 4pm, 5pm
         return "2:00PM", "5:00PM"
 
-    elif hour in (21, 22):    # 9pm, 10pm, 11pm
+    elif hour in (21, 22, 23, 0):    # 9pm, 10pm, 11pm
         return "5:00PM", "9:00PM"
 
     else:
