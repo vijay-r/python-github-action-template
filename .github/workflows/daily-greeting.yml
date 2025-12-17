@@ -2,10 +2,11 @@ name: Daily Greeting
 
 on:
   schedule:
-    - cron: '45 1 * * 4'    # Wednesday 09:45 SGT
-    - cron: '45 5 * * 4'    # Wednesday 13:45 SGT (1:45 PM)
-    - cron: '45 8 * * 4'    # Wednesday 17:45 SGT (5:45 PM)
-    - cron: '45 13 * * 4'   # Wednesday 21:45 SGT (9:45 PM)
+    - cron: '45 1 * * 4'   # (9:45 AM) - (9=1pm, 2=10pmm 3=11pm, 4=12pm)
+    - cron: '0 6 * * 4'    # (2:00 PM) (5=1pm, 6=2pm)
+    - cron: '0 9 * * 4'    # (9:00 PM) (8=4pm, 9=5pm)
+    - cron: '0 14 * * 4'   # (10:00 PM) (13=9pm, 14=10pm)
+    # Mon (1) | Tue (2) | Wednesday (3) | Thursday(4) | Friday(5) | Saturday(6) | Sunday(0)
   workflow_dispatch:
     inputs:
       timezone:
