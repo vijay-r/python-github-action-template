@@ -7,10 +7,17 @@ from zoneinfo import ZoneInfo
 
 numberToFetch = "50"
 
+rawJsonPath = f"json/"
+
 def fetchXML():
 
     start, end = get_time_window()
     print(f"Time Window: {start} to {end}")
+
+    now_sg = datetime.now(ZoneInfo("Asia/Singapore"))
+    fileName = now_sg.strftime("%Y%m%d_%H%M%S")
+    jsonPath = f"{rawJsonPath}{fileName}.json"
+    print("Raw JSON Path:", jsonPath)
 
     # URL to fetch XML
     url = f"https://np.tritondigital.com/public/nowplaying?mountName=OLI968FMAAC&numberToFetch={numberToFetch}&eventType=ad"
@@ -65,6 +72,10 @@ def fetchXML():
         )
     
     print(f"data={json.dumps(sorted_data, ensure_ascii=False)}")
+    
+    # Save JSON
+    with open(jsonPath, "w", encoding="utf-8") as f:
+        json.dump(sorted_data, f, indent=2, ensure_ascii=False)
 
     report(sorted_data)
 
