@@ -11,3 +11,4 @@ gh repo set-default
 
 
 python3 main.py;git add .;git commit -m "inti";git push
+changed using mobile app
